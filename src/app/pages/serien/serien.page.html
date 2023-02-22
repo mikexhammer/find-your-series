@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="secondary">
     <ion-title>Top Serien</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -7,12 +7,23 @@
 
 <ion-content>
   <ion-list>
-    <ion-item button *ngFor="let item of serien"> <!-- with angular loop trough the list -->
+    <ion-item button *ngFor="let item of serien" [routerLink]="[item.id]">
+      <ion-avatar slot="start">
+        <img [src]="imageBaseUrl + '/w92/' + item.poster_path">
+      </ion-avatar>
+
       <ion-label>
         {{item.name}}
         <p>{{item.first_air_date | date: 'y'}}</p>
       </ion-label>
+      <ion-badge slot="end">{{item.vote_average}}</ion-badge>
     </ion-item>
   </ion-list>
+
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($any($event))">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more series...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

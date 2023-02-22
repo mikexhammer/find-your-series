@@ -17,7 +17,7 @@ const routes: Routes = [
       import('./pages/serien/serien.module').then((m) => m.SerienPageModule),
   },
   {
-    path: 'serien-details',
+    path: 'serien/:id',
     loadChildren: () =>
       import('./pages/serien-details/serien-details.module').then(
         (m) => m.SerienDetailsPageModule
