@@ -4,6 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
+  <ion-list>
+    <ion-item button *ngFor="let item of serien"> <!-- with angular loop trough the list -->
+      <ion-label>
+        {{item.name}}
+        <p>{{item.first_air_date | date: 'y'}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

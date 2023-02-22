@@ -8,7 +8,7 @@ import { SerieService } from 'src/app/services/serie.service';
   styleUrls: ['./serien.page.scss'],
 })
 export class SerienPage implements OnInit {
-  serien = [];
+  serien = [] as any[];
   currentPage = 1;
 
   constructor(
@@ -33,6 +33,7 @@ export class SerienPage implements OnInit {
       loading.dismiss(); //Shows first loading sign until all is done
       this.serien = [...this.serien, ...res.results];
       console.log(res);
+      console.log(this.serien);
     });
   }
 }
