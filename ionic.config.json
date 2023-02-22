@@ -1,0 +1,7 @@
+{
+  "name": "Find your series",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
