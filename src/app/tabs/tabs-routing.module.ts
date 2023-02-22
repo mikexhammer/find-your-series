@@ -8,29 +8,45 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'serien',
+        loadChildren: () =>
+          import('../pages/serien/serien.module').then(
+            (m) => m.SerienPageModule
+          ),
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'serien/:id',
+        loadChildren: () =>
+          import('../pages/serien-details/serien-details.module').then(
+            (m) => m.SerienDetailsPageModule
+          ),
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'favorites',
+        loadChildren: () =>
+          import('../pages/favorites/favorites-routing.module').then(
+            (m) => m.FavoritesPageRoutingModule
+          ),
+      },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('../pages/settings/settings-routing.module').then(
+            (m) => m.SettingsPageRoutingModule
+          ),
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
-      }
-    ]
+        redirectTo: '../pages/serien',
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }
+    redirectTo: '../pages/serien',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

@@ -27,6 +27,6 @@ export class SerienDetailsPage implements OnInit {
   }
 
   openHomepage() {
-    window.open(this.serie);
+    window.open('www.themoviedb.org/tv/' + this.serie.id);
   }
 }
