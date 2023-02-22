@@ -38,9 +38,9 @@ export class SerieService {
     );
   }
 
-  getSerieByGenre(genre: string) {
-    return this.http.get(
-      `${environment.baseUrl}/discover/tv?api_key=${environment.apiKey}&with_genres=${genre}`
+  getTopRatedSeriesByGenre(page = 1, genre: string): Observable<ApiResult> {
+    return this.http.get<ApiResult>( //Observable<ApiResult> = return type of this function
+      `${environment.baseUrl}/discover/tv?api_key=${environment.apiKey}&page=${page}&with_genres=${genre}`
     );
   }
 
@@ -50,15 +50,9 @@ export class SerieService {
     );
   }
 
-  getSerieByLanguage(language: string) {
-    return this.http.get(
-      `${environment.baseUrl}/discover/tv?api_key=${environment.apiKey}&with_original_language=${language}`
-    );
-  }
-
-  getLanguageList() {
-    return this.http.get(
-      `${environment.baseUrl}/configuration/languages?api_key=${environment.apiKey}`
+  getTopRatedSeriesByYear(page = 1, year: string): Observable<ApiResult> {
+    return this.http.get<ApiResult>( //Observable<ApiResult> = return type of this function
+      `${environment.baseUrl}/discover/tv?api_key=${environment.apiKey}&page=${page}&first_air_date_year=${year}`
     );
   }
 }
