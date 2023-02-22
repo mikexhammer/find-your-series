@@ -5,7 +5,11 @@
 </ion-header>
 
 
+
 <ion-content>
+  <app-search></app-search>
+
+
   <ion-list>
     <ion-item button *ngFor="let item of serien" [routerLink]="[item.id]">
       <ion-avatar slot="start">

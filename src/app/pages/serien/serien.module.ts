@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { SerienPageRoutingModule } from './serien-routing.module';
 
 import { SerienPage } from './serien.page';
+import { SearchPageModule } from '../search/search.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SerienPageRoutingModule
+    SerienPageRoutingModule,
+    SearchPageModule,
   ],
-  declarations: [SerienPage]
+  declarations: [SerienPage],
 })
 export class SerienPageModule {}
