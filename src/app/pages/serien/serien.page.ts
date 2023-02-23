@@ -31,6 +31,7 @@ export class SerienPage implements OnInit {
 
   //Asnyc bcs code will await until all of this is finished :)
   async loadSeries(event?: InfiniteScrollCustomEvent) {
+    console.log('loadSeries() called');
     const loading = await this.loadingCtrl.create({
       message: 'Loading...',
       spinner: 'bubbles',
@@ -48,11 +49,6 @@ export class SerienPage implements OnInit {
           console.log(this.serien);
 
           event?.target.complete();
-
-          if (event) {
-            event.target.disabled = res.total_pages === this.currentPage;
-            console.log('event.target.disabled: ' + event.target.disabled);
-          }
         });
     } else {
       this.serieService.getTopRatedSeries(this.currentPage).subscribe((res) => {
@@ -62,10 +58,6 @@ export class SerienPage implements OnInit {
         console.log(this.serien);
 
         event?.target.complete();
-
-        if (event) {
-          event.target.disabled = res.total_pages === this.currentPage;
-        }
       });
     }
   }
@@ -74,6 +66,5 @@ export class SerienPage implements OnInit {
     this.currentPage++;
     this.loadSeries(event);
     console.log('SearchName = ' + this.searchName);
-    console.log('currentPage = ' + this.currentPage);
   }
 }
