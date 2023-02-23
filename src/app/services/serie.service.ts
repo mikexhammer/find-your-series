@@ -55,4 +55,19 @@ export class SerieService {
       `${environment.baseUrl}/discover/tv?api_key=${environment.apiKey}&page=${page}&first_air_date_year=${year}`
     );
   }
+
+  saveSerieToLocalStorage(serie: any) {
+    let series = this.getSeriesFromLocalStorage();
+    series.push(serie);
+    localStorage.setItem('series', JSON.stringify(series));
+  }
+
+  getSeriesFromLocalStorage() {
+    let series = localStorage.getItem('series');
+    if (series) {
+      return JSON.parse(series);
+    } else {
+      return [];
+    }
+  }
 }
