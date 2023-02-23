@@ -24,27 +24,27 @@ const routes: Routes = [
       {
         path: 'favorites',
         loadChildren: () =>
-          import('../pages/favorites/favorites-routing.module').then(
-            (m) => m.FavoritesPageRoutingModule
+          import('../pages/favorites/favorites.module').then(
+            (m) => m.FavoritesPageModule
           ),
       },
       {
         path: 'settings',
         loadChildren: () =>
-          import('../pages/settings/settings-routing.module').then(
-            (m) => m.SettingsPageRoutingModule
+          import('../pages/settings/settings.module').then(
+            (m) => m.SettingsPageModule
           ),
       },
       {
         path: '',
-        redirectTo: '../pages/serien',
+        redirectTo: 'serien',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '../pages/serien',
+    redirectTo: 'serien',
     pathMatch: 'full',
   },
 ];
