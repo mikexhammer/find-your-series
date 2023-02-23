@@ -16,7 +16,9 @@ export class SerienPage implements OnInit {
   serien = [] as any[];
   currentPage = 1;
   imageBaseUrl = environment.images;
-  searchterm: string;
+  searchName;
+  searchGenre;
+  searchYear;
 
   constructor(
     private serieService: SerieService,
@@ -28,8 +30,7 @@ export class SerienPage implements OnInit {
   }
 
   //Asnyc bcs code will await until all of this is finished :)
-  async loadSeries(event?: InfiniteScrollCustomEvent, searchValue?: string, ) {
-    this.searchterm=searchValue;
+  async loadSeries(event?: InfiniteScrollCustomEvent) {
     const loading = await this.loadingCtrl.create({
       message: 'Loading...',
       spinner: 'bubbles',
@@ -37,7 +38,22 @@ export class SerienPage implements OnInit {
 
     await loading.present();
 
-    if (!searchValue) {
+    if (this.searchName) {
+      this.serieService
+        .getSerieByName(this.searchName, this.currentPage)
+        .subscribe((res) => {
+          loading.dismiss(); //Shows first loading sign until all is done
+          this.serien.push(...res.results);
+          console.log(res);
+          console.log(this.serien);
+
+          event?.target.complete();
+
+          if (event) {
+            event.target.disabled = res.total_pages === this.currentPage;
+          }
+        });
+    } else {
       this.serieService.getTopRatedSeries(this.currentPage).subscribe((res) => {
         loading.dismiss(); //Shows first loading sign until all is done
         this.serien.push(...res.results);
@@ -50,17 +66,9 @@ export class SerienPage implements OnInit {
           event.target.disabled = res.total_pages === this.currentPage;
         }
       });
-    } else {
-      this.serieService.getSerieByName(searchValue).subscribe((res) => {
-        loading.dismiss(); //Shows first loading sign until all is done
-        this.serien.push(...res.results);
-        console.log(res);
-        console.log(this.serien);
-      });
     }
-
-
   }
+
   loadMore(event: InfiniteScrollCustomEvent) {
     this.currentPage++;
     this.loadSeries(event);

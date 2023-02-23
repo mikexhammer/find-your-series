@@ -20,7 +20,7 @@
         {{item.provider_id}}
         <p>{{item.first_air_date | date: 'y'}}</p>
       </ion-label>
-      <ion-badge slot="end">{{item.vote_average}}</ion-badge>
+      <ion-badge slot="end">{{item.vote_average | number: '1.0-1'}}</ion-badge>
     </ion-item>
   </ion-list>
 

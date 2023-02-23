@@ -17,7 +17,10 @@ SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
   encapsulation: ViewEncapsulation.None,
 })
 export class SearchPage implements OnInit {
-  constructor(public serieService: SerieService, public seriePage: SerienPage) {}
+  constructor(
+    public serieService: SerieService,
+    public seriePage: SerienPage
+  ) {}
 
   ngOnInit() {}
 
@@ -26,6 +29,7 @@ export class SearchPage implements OnInit {
     //invoke method from serien.page.ts loadSerie() and pass searchValue
     this.seriePage.serien = [];
     this.seriePage.currentPage = 1;
-    this.seriePage.loadSeries(event,searchValue);
+    this.seriePage.searchName = searchValue;
+    this.seriePage.loadSeries();
   }
 }
