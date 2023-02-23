@@ -16,6 +16,7 @@ export class SerienPage implements OnInit {
   serien = [] as any[];
   currentPage = 1;
   imageBaseUrl = environment.images;
+  searchterm: string;
 
   constructor(
     private serieService: SerieService,
@@ -27,7 +28,8 @@ export class SerienPage implements OnInit {
   }
 
   //Asnyc bcs code will await until all of this is finished :)
-  async loadSeries(event?: InfiniteScrollCustomEvent) {
+  async loadSeries(event?: InfiniteScrollCustomEvent, searchValue?: string, ) {
+    this.searchterm=searchValue;
     const loading = await this.loadingCtrl.create({
       message: 'Loading...',
       spinner: 'bubbles',
@@ -35,20 +37,30 @@ export class SerienPage implements OnInit {
 
     await loading.present();
 
-    this.serieService.getTopRatedSeries(this.currentPage).subscribe((res) => {
-      loading.dismiss(); //Shows first loading sign until all is done
-      this.serien.push(...res.results);
-      console.log(res);
-      console.log(this.serien);
+    if (!searchValue) {
+      this.serieService.getTopRatedSeries(this.currentPage).subscribe((res) => {
+        loading.dismiss(); //Shows first loading sign until all is done
+        this.serien.push(...res.results);
+        console.log(res);
+        console.log(this.serien);
 
-      event?.target.complete();
+        event?.target.complete();
 
-      if (event) {
-        event.target.disabled = res.total_pages === this.currentPage;
-      }
-    });
+        if (event) {
+          event.target.disabled = res.total_pages === this.currentPage;
+        }
+      });
+    } else {
+      this.serieService.getSerieByName(searchValue).subscribe((res) => {
+        loading.dismiss(); //Shows first loading sign until all is done
+        this.serien.push(...res.results);
+        console.log(res);
+        console.log(this.serien);
+      });
+    }
+
+
   }
-
   loadMore(event: InfiniteScrollCustomEvent) {
     this.currentPage++;
     this.loadSeries(event);

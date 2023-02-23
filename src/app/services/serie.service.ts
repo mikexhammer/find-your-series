@@ -14,6 +14,8 @@ export interface ApiResult {
   total_results: number;
 }
 
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -32,8 +34,8 @@ export class SerieService {
     );
   }
 
-  getSerieByName(name: string) {
-    return this.http.get(
+  getSerieByName(name: string): Observable<ApiResult> {
+    return this.http.get<ApiResult>(
       `${environment.baseUrl}/search/tv?api_key=${environment.apiKey}&query=${name}`
     );
   }
