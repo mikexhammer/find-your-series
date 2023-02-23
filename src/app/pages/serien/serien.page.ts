@@ -51,6 +51,7 @@ export class SerienPage implements OnInit {
 
           if (event) {
             event.target.disabled = res.total_pages === this.currentPage;
+            console.log('event.target.disabled: ' + event.target.disabled);
           }
         });
     } else {
@@ -72,5 +73,7 @@ export class SerienPage implements OnInit {
   loadMore(event: InfiniteScrollCustomEvent) {
     this.currentPage++;
     this.loadSeries(event);
+    console.log('SearchName = ' + this.searchName);
+    console.log('currentPage = ' + this.currentPage);
   }
 }
