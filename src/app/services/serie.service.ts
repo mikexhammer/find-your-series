@@ -98,4 +98,8 @@ export class SerieService {
       return false;
     }
   }
+
+  clearLocalStorage() {
+    localStorage.clear();
+  }
 }
