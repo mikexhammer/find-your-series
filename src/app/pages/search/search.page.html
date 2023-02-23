@@ -1,11 +1,5 @@
 <!-- home.page.html -->
-<ion-content>
-    <swiper>
-        <ng-template swiperSlide>
-        <ion-searchbar [debounce]="1000" ></ion-searchbar>
-        <ion-img src="https://www.themoviedb.org/t/p/w1280/1yppMeTNQwDrzaUH4dRCx4mr8We.jpg" alt=""></ion-img>
-      </ng-template>
-      <ng-template swiperSlide>Slide 2</ng-template>
-      <ng-template swiperSlide>Slide 3</ng-template>
-    </swiper>
-  </ion-content>
+<ion-content class="background">
+  <ion-searchbar color="light" [debounce]="1000" placeholder="Search series by name"
+    (ionChange)="searchSerieByName($event)"></ion-searchbar>
+</ion-content>

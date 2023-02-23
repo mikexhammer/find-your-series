@@ -57,17 +57,45 @@ export class SerieService {
   }
 
   saveSerieToLocalStorage(serie: any) {
+    //if item is already in local storage, do not add it again
     let series = this.getSeriesFromLocalStorage();
+    if (series.find((s: { id: any }) => s.id === serie.id)) {
+      console.log('Serie bereits in Local Storage');
+      return;
+    }
     series.push(serie);
     localStorage.setItem('series', JSON.stringify(series));
+    console.log('Hier dein Local Storage breeeet');
+    console.log(this.getSeriesFromLocalStorage());
   }
 
   getSeriesFromLocalStorage() {
+    //get newest item first
     let series = localStorage.getItem('series');
     if (series) {
       return JSON.parse(series);
     } else {
       return [];
+    }
+  }
+
+  deleteSerieFromLocalStorage(serie: any) {
+    let series = this.getSeriesFromLocalStorage();
+    let index = series.findIndex((s: { id: any }) => s.id === serie.id);
+    series.splice(index, 1);
+    localStorage.setItem('series', JSON.stringify(series));
+  }
+
+  serieAlreadyInLocalStorage(serie?: any) {
+    console.log('Serie bereits in Local Storage?');
+    console.log(serie.id);
+    let series = this.getSeriesFromLocalStorage();
+    if (series.find((s: { id: any }) => s.id === serie.id)) {
+      console.log('JA!');
+      return true;
+    } else {
+      console.log('Nein!');
+      return false;
     }
   }
 }
