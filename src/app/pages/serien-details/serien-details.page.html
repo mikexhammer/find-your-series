@@ -44,7 +44,8 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button expand="full" (click)="openHomepage()" *ngIf="serie?.homepage">
+  <ion-button expand="full" (click)="this.serieService.saveSerieToLocalStorage(serie)">
+    <!-- disable button if serie is already in local storage -->
     <ion-icon name="star-outline" slot="start"></ion-icon>
     save to list
   </ion-button>

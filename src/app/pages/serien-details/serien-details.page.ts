@@ -14,7 +14,7 @@ export class SerienDetailsPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private serieService: SerieService
+    public serieService: SerieService
   ) {}
 
   ngOnInit() {
@@ -24,9 +24,5 @@ export class SerienDetailsPage implements OnInit {
       console.log(res);
       this.serie = res;
     });
-  }
-
-  openHomepage() {
-    window.open('www.themoviedb.org/tv/' + this.serie.id);
   }
 }

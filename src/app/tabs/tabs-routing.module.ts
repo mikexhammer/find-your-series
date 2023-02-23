@@ -29,6 +29,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'favorites/:id',
+        loadChildren: () =>
+          import('../pages/serien-details/serien-details.module').then(
+            (m) => m.SerienDetailsPageModule
+          ),
+      },
+      {
         path: 'settings',
         loadChildren: () =>
           import('../pages/settings/settings.module').then(
