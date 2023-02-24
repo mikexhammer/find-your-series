@@ -28,6 +28,14 @@ export class SerienDetailsPage implements OnInit {
     });
   }
 
+  checkIfSerieAlreadyInLocalStorage(serie) {
+    if (this.serieService.serieAlreadyInLocalStorage(serie)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   saveSeries(serie) {
     if (this.serieService.serieAlreadyInLocalStorage(serie)) {
       console.log('Serie already in local storage');

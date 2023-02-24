@@ -13,6 +13,7 @@ export class FavoritesPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
 
+  // Refresh
   handleRefresh(event) {
     setTimeout(() => {
       this.setFavorite();
