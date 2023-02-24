@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 export class SerienPage implements OnInit {
   serien = [] as any[];
   currentPage = 1;
+  disableInfiniteScroll = false;
   imageBaseUrl = environment.images;
   searchName;
   searchGenre;
@@ -49,6 +50,10 @@ export class SerienPage implements OnInit {
           console.log(this.serien);
 
           event?.target.complete();
+
+          if(res.total_pages === this.currentPage){
+            this.disableInfiniteScroll = true;
+          }
         });
     } else {
       this.serieService.getTopRatedSeries(this.currentPage).subscribe((res) => {
@@ -58,6 +63,10 @@ export class SerienPage implements OnInit {
         console.log(this.serien);
 
         event?.target.complete();
+
+        if(res.total_pages === this.currentPage){
+          this.disableInfiniteScroll = true;
+        }
       });
     }
   }

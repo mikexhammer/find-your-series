@@ -25,7 +25,7 @@
   </ion-list>
 
 
-  <ion-infinite-scroll (ionInfinite)="loadMore($any($event))">
+  <ion-infinite-scroll *ngIf="this.disableInfiniteScroll==false" (ionInfinite)="loadMore($any($event))">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more series...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>

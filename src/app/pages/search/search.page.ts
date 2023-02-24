@@ -26,7 +26,7 @@ export class SearchPage implements OnInit {
 
   searchSerieByName(event) {
     const searchValue = event.target.value;
-    //invoke method from serien.page.ts loadSerie() and pass searchValue
+    this.seriePage.disableInfiniteScroll = false;
     this.seriePage.serien = [];
     this.seriePage.currentPage = 1;
     this.seriePage.searchName = searchValue;
