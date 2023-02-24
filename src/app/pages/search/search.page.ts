@@ -25,6 +25,7 @@ export class SearchPage implements OnInit {
   ngOnInit() {}
 
   searchSerieByName(event) {
+    this.seriePage.scrollToTop();
     const searchValue = event.target.value;
     this.seriePage.disableInfiniteScroll = false;
     this.seriePage.serien = [];

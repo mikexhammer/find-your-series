@@ -76,4 +76,8 @@ export class SerienPage implements OnInit {
     this.loadSeries(event);
     console.log('SearchName = ' + this.searchName);
   }
+
+  scrollToTop() {
+    document.querySelector('ion-content')?.scrollToTop(500);
+  }
 }
