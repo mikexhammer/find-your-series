@@ -46,11 +46,20 @@ export class SettingsPage implements OnInit {
     this.roleMessage = `Dismissed with role: ${role}`;
   }
 
-checkIfLocalStorageIsEmpty() {
+  checkIfLocalStorageIsEmpty() {
     if (this.serieService.getSeriesFromLocalStorage().length === 0) {
       return true;
     } else {
       return false;
+    }
+  }
+
+  toggleTheme(event) {
+    console.log(event.detail.checked);
+    if (event.detail.checked) {
+      document.body.setAttribute('color-theme', 'dark');
+    } else {
+      document.body.setAttribute('color-theme', 'light');
     }
   }
 }
