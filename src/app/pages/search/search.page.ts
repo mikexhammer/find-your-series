@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  AfterContentChecked,
+  Component,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { SerieService } from 'src/app/services/serie.service';
 import { SerienPage } from '../serien/serien.page';
 import SwiperCore, {
@@ -6,9 +12,11 @@ import SwiperCore, {
   Keyboard,
   Pagination,
   Scrollbar,
+  EffectFade,
   Zoom,
 } from 'swiper';
-SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
+import { SwiperComponent } from 'swiper/angular';
+SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom, EffectFade]);
 
 @Component({
   selector: 'app-search',
@@ -16,12 +24,19 @@ SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
   styleUrls: ['./search.page.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class SearchPage implements OnInit {
+export class SearchPage implements OnInit, AfterContentChecked {
+  @ViewChild('swiper') swiper: SwiperComponent;
+
   constructor(
     public serieService: SerieService,
     public seriePage: SerienPage
   ) {}
 
+  ngAfterContentChecked(): void {
+    if (this.swiper) {
+      this.swiper.updateSwiper({});
+    }
+  }
   ngOnInit() {}
 
   searchSerieByName(event) {
@@ -30,6 +45,24 @@ export class SearchPage implements OnInit {
     this.seriePage.serien = [];
     this.seriePage.currentPage = 1;
     this.seriePage.searchName = searchValue;
+    this.seriePage.loadSeries();
+  }
+
+  searchSerieByGenre(event) {
+    const searchValue = event.target.value;
+    this.seriePage.disableInfiniteScroll = false;
+    this.seriePage.serien = [];
+    this.seriePage.currentPage = 1;
+    this.seriePage.searchGenre = searchValue;
+    this.seriePage.loadSeries();
+  }
+
+  searchSerieByYear(event) {
+    const searchValue = event.target.value;
+    this.seriePage.disableInfiniteScroll = false;
+    this.seriePage.serien = [];
+    this.seriePage.currentPage = 1;
+    this.seriePage.searchYear = searchValue;
     this.seriePage.loadSeries();
   }
 }

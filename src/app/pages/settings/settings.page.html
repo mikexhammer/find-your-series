@@ -9,12 +9,14 @@
   <ion-list>
     <ion-item>
       <ion-label>Dark mode</ion-label>
-      <ion-toggle slot="end" [checked]="true" [enableOnOffLabels]="true" (ionChange)='toggleTheme($event)'></ion-toggle>
+      <ion-toggle slot="end" [checked]="false" [enableOnOffLabels]="true"
+        (ionChange)='toggleTheme($event)'></ion-toggle>
     </ion-item>
 
     <ion-item>
       <ion-label>Delete all Favourites</ion-label>
-      <ion-button slot="end" color="danger" fill="outline" shape="round" class="deleteButton" (click)="presentAlert()" [disabled]="checkIfLocalStorageIsEmpty()">
+      <ion-button slot="end" color="danger" fill="outline" shape="round" class="deleteButton" (click)="presentAlert()"
+        [disabled]="checkIfLocalStorageIsEmpty()">
         <ion-icon slot="icon-only" name="trash"></ion-icon>
       </ion-button>
     </ion-item>

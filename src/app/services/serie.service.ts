@@ -38,7 +38,7 @@ export class SerieService {
     );
   }
 
-  getTopRatedSeriesByGenre(page = 1, genre: string): Observable<ApiResult> {
+  getTopRatedSeriesByGenre(genre: string, page = 1): Observable<ApiResult> {
     return this.http.get<ApiResult>( //Observable<ApiResult> = return type of this function
       `${environment.baseUrl}/discover/tv?api_key=${environment.apiKey}&page=${page}&with_genres=${genre}`
     );
@@ -50,7 +50,7 @@ export class SerieService {
     );
   }
 
-  getTopRatedSeriesByYear(page = 1, year: string): Observable<ApiResult> {
+  getTopRatedSeriesByYear(year: string, page = 1): Observable<ApiResult> {
     return this.http.get<ApiResult>( //Observable<ApiResult> = return type of this function
       `${environment.baseUrl}/discover/tv?api_key=${environment.apiKey}&page=${page}&first_air_date_year=${year}`
     );

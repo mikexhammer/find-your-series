@@ -51,7 +51,37 @@ export class SerienPage implements OnInit {
 
           event?.target.complete();
 
-          if(res.total_pages === this.currentPage){
+          if (res.total_pages === this.currentPage) {
+            this.disableInfiniteScroll = true;
+          }
+        });
+    } else if (this.searchGenre) {
+      this.serieService
+        .getTopRatedSeriesByGenre(this.searchGenre, this.currentPage)
+        .subscribe((res) => {
+          loading.dismiss(); //Shows first loading sign until all is done
+          this.serien.push(...res.results);
+          console.log(res);
+          console.log(this.serien);
+
+          event?.target.complete();
+
+          if (res.total_pages === this.currentPage) {
+            this.disableInfiniteScroll = true;
+          }
+        });
+    } else if (this.searchYear) {
+      this.serieService
+        .getTopRatedSeriesByYear(this.searchYear, this.currentPage)
+        .subscribe((res) => {
+          loading.dismiss(); //Shows first loading sign until all is done
+          this.serien.push(...res.results);
+          console.log(res);
+          console.log(this.serien);
+
+          event?.target.complete();
+
+          if (res.total_pages === this.currentPage) {
             this.disableInfiniteScroll = true;
           }
         });
@@ -64,7 +94,7 @@ export class SerienPage implements OnInit {
 
         event?.target.complete();
 
-        if(res.total_pages === this.currentPage){
+        if (res.total_pages === this.currentPage) {
           this.disableInfiniteScroll = true;
         }
       });
