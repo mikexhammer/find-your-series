@@ -65,8 +65,6 @@ export class SerieService {
     }
     series.push(serie);
     localStorage.setItem('series', JSON.stringify(series));
-    console.log('Hier dein Local Storage breeeet');
-    console.log(this.getSeriesFromLocalStorage());
   }
 
   getSeriesFromLocalStorage() {
