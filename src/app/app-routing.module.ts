@@ -12,6 +12,15 @@ const routes: Routes = [
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
+  {
+    path: 'impressum',
+    loadChildren: () => import('./pages/impressum/impressum.module').then( m => m.ImpressumPageModule)
+  },
+  {
+    path: 'licence',
+    loadChildren: () => import('./pages/licence/licence.module').then( m => m.LicencePageModule)
+  },
+
 ];
 @NgModule({
   imports: [

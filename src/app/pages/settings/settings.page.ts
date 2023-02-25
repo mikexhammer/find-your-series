@@ -10,6 +10,7 @@ import { SerieService } from 'src/app/services/serie.service';
 export class SettingsPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
+licence: any|string;
 
   constructor(
     private serieService: SerieService,
