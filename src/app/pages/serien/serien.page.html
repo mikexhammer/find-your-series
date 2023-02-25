@@ -29,7 +29,7 @@
     <ion-row>
       <ion-col size="6" *ngFor="let item of serien">
         <ion-card [routerLink]="[item.id]">
-          <ion-img [src]="imageBaseUrl + '/w300/' + item.poster_path"></ion-img>
+          <ion-img class="poster" [src]="imageBaseUrl + '/w300/' + item.poster_path"></ion-img>
           <ion-card-content>
             <ion-badge slot="start">{{item.first_air_date | date: 'y'}}</ion-badge>
             <ion-badge color="warning" slot="end">{{item.vote_average | number: '1.0-1'}}</ion-badge>
