@@ -10,6 +10,7 @@ import { SerienPage } from '../serien/serien.page';
 import SwiperCore, { Navigation, Pagination, SwiperOptions } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
 import { Observable } from 'rxjs';
+import { IonSearchbar } from '@ionic/angular';
 SwiperCore.use([Navigation, Pagination]);
 
 @Component({
@@ -20,6 +21,9 @@ SwiperCore.use([Navigation, Pagination]);
 })
 export class SearchPage implements OnInit, AfterContentChecked {
   @ViewChild('swiper') swiper: SwiperComponent;
+  @ViewChild('nameSearchbar') nameSearchbar: IonSearchbar;
+  @ViewChild('yearSearchbar') yearSearchbar: IonSearchbar;
+
   config: SwiperOptions = {
     navigation: true,
     pagination: true,
@@ -32,6 +36,8 @@ export class SearchPage implements OnInit, AfterContentChecked {
 
   swiperSlideChanged(e) {
     console.log('slide changed', e);
+    this.nameSearchbar.value = '';
+    this.yearSearchbar.value = '';
   }
 
   ngAfterContentChecked(): void {
