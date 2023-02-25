@@ -7,16 +7,10 @@ import {
 } from '@angular/core';
 import { SerieService } from 'src/app/services/serie.service';
 import { SerienPage } from '../serien/serien.page';
-import SwiperCore, {
-  Autoplay,
-  Keyboard,
-  Pagination,
-  Scrollbar,
-  EffectFade,
-  Zoom,
-} from 'swiper';
+import SwiperCore, { Pagination, SwiperOptions } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
-SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom, EffectFade]);
+import { Observable } from 'rxjs';
+SwiperCore.use([Pagination]);
 
 @Component({
   selector: 'app-search',
@@ -26,11 +20,19 @@ SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom, EffectFade]);
 })
 export class SearchPage implements OnInit, AfterContentChecked {
   @ViewChild('swiper') swiper: SwiperComponent;
+  config: SwiperOptions = {
+    navigation: true,
+    pagination: true,
+  };
 
   constructor(
     public serieService: SerieService,
     public seriePage: SerienPage
   ) {}
+
+  swiperSlideChanged(e) {
+    console.log('slide changed', e);
+  }
 
   ngAfterContentChecked(): void {
     if (this.swiper) {
@@ -39,7 +41,7 @@ export class SearchPage implements OnInit, AfterContentChecked {
   }
   ngOnInit() {}
 
-  searchSerieByName(event) {
+  searchSerieByName(event): void {
     const searchValue = event.target.value;
     this.seriePage.disableInfiniteScroll = false;
     this.seriePage.serien = [];

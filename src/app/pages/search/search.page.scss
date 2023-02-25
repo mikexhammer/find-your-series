@@ -4,9 +4,9 @@
 
 //set ion-content background to the movie poster
 
-// ion-content.background {
-//   --background: url("https://www.themoviedb.org/t/p/w1280/1yppMeTNQwDrzaUH4dRCx4mr8We.jpg") 0 0/100%  no-repeat;
-// }
+ion-content.background {
+  --background: url("https://www.themoviedb.org/t/p/w1280/1yppMeTNQwDrzaUH4dRCx4mr8We.jpg") 0 0/100%  no-repeat;
+}
 
 //set ion-img to max wdth 100% and height to 500px
 ion-content {
@@ -15,16 +15,6 @@ ion-content {
 
 }
 
-//set ion-searchbar into the middle of ion-content
-// ion-searchbar {
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-// }
-
-//adpat ion-img on ion-content with max height 500px
-
 
 .swiper{
   width: 100%;
@@ -32,7 +22,6 @@ ion-content {
 }
 
 .swiper-slide {
-  background: url("https://www.themoviedb.org/t/p/w1280/1yppMeTNQwDrzaUH4dRCx4mr8We.jpg") 0 0/100%  no-repeat;
   display:flex;
   flex-direction: column;
   align-items: center;

@@ -1,17 +1,16 @@
 <!-- home.page.html -->
 <ion-content class="background">
-  <!-- <ion-searchbar color="light" [debounce]="500" placeholder="Search series by name"
-    (ionChange)="searchSerieByName($event)"></ion-searchbar> -->
 
-  <!-- <swiper #swiper effect="fade"> -->
-  <swiper #swiper>
-    <ng-template swiperSlide class="slide1"> <ion-searchbar color="light" [debounce]="500"
-        placeholder="Search series by name" (ionChange)="searchSerieByName($event)"></ion-searchbar> </ng-template>
-    <ng-template swiperSlide><ion-searchbar color="light" [debounce]="500" placeholder="Search series by genre"
-        (ionChange)="searchSerieByGenre($event)"></ion-searchbar> </ng-template>
+
+  <swiper #swiper [config]="config" (slideChange)="swiperSlideChanged($event)">
+    <ng-template swiperSlide> <ion-searchbar color="light" [debounce]="500" placeholder="Search series by name"
+        (ionChange)="searchSerieByName($event)"></ion-searchbar> </ng-template>
+    <!-- <ng-template swiperSlide><ion-searchbar color="light" [debounce]="500" placeholder="Search series by genre"
+        (ionChange)="searchSerieByGenre($event)"></ion-searchbar> </ng-template> -->
     <ng-template swiperSlide><ion-searchbar color="light" [debounce]="500" placeholder="Search series by year"
         (ionChange)="searchSerieByYear($event)"></ion-searchbar> </ng-template>
 
-
   </swiper>
+
+
 </ion-content>
