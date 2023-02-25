@@ -10,11 +10,14 @@ import { SerieService } from 'src/app/services/serie.service';
 export class SettingsPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
+  darkMode: boolean = true;
 
   constructor(
     private serieService: SerieService,
     private alertController: AlertController
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {}
 
@@ -54,12 +57,10 @@ export class SettingsPage implements OnInit {
     }
   }
 
-  toggleTheme(event) {
-    console.log(event.detail.checked);
-    if (event.detail.checked) {
-      document.body.setAttribute('color-theme', 'dark');
-    } else {
-      document.body.setAttribute('color-theme', 'light');
-    }
+  switch() {
+    // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    this.darkMode = !this.darkMode;
+    document.body.classList.toggle( 'dark' );
+    
   }
 }
