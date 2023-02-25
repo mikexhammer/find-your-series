@@ -83,8 +83,19 @@ export class SerienPage implements OnInit {
     document.querySelector('ion-content')?.scrollToTop(500);
   }
 
-  toggleView() {
-    this.listView = !this.listView;
-    this.gridView = !this.gridView;
+  toggleGrid() {
+    this.gridView = true;
+    this.listView = false;
+    document.getElementById('grid').style.color = 'black';
+    document.getElementById('view').style.color = 'gray';
   }
+
+  toggleView() {
+    this.gridView = false;
+    this.listView = true;
+    document.getElementById('grid').style.color = 'gray';
+    document.getElementById('view').style.color = 'black';
+  }
+
+
 }

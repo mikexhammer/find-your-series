@@ -15,3 +15,21 @@
 ion-badge {
     margin-right: 6px; 
 }
+
+ion-button {
+    size: small;
+    margin-right: 5px;
+    --border-radius: 20px;
+}
+
+#grid {
+    --color: black;
+}
+
+#view {
+    --color: gray;
+}
+
+// ion-icon {
+//     padding-left: 5px;
+// }

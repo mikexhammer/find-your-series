@@ -10,8 +10,19 @@
   <app-search></app-search>
 
   <ion-item>
-    <ion-label>Switch between Grid and List</ion-label>
-    <ion-toggle slot="end" (ionChange)="toggleView()"></ion-toggle>
+    <ion-label *ngIf="!this.searchName">Top Series</ion-label>
+    <ion-label *ngIf="this.searchName">Search results</ion-label>
+    <!-- <ion-icon *ngIf="this.gridView" name="grid-outline" slot="end"></ion-icon>
+    <ion-icon *ngIf="this.listView" name="list-outline" slot="end"></ion-icon>
+    <ion-toggle slot="end" (ionChange)="toggleView()"></ion-toggle> -->
+    <ion-button id="grid" (click)="toggleGrid()">
+      <ion-icon name="grid-outline" ></ion-icon>
+      <!-- Grid -->
+    </ion-button>
+    <ion-button id="view" (click)="toggleView()">
+      <ion-icon name="list-outline" ></ion-icon>
+      <!-- List -->
+    </ion-button>
   </ion-item>
 
   <ion-grid *ngIf="this.gridView">
