@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 import { SerieService } from 'src/app/services/serie.service';
 import { SerienPage } from '../serien/serien.page';
-import SwiperCore, { Pagination, SwiperOptions } from 'swiper';
+import SwiperCore, { Navigation, Pagination, SwiperOptions } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
 import { Observable } from 'rxjs';
-SwiperCore.use([Pagination]);
+SwiperCore.use([Navigation, Pagination]);
 
 @Component({
   selector: 'app-search',

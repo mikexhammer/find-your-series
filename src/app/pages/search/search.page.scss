@@ -1,5 +1,6 @@
 //Import Swiper SCSS
 @import 'node_modules/swiper/swiper.scss';
+@import 'node_modules/swiper/modules/pagination/pagination.scss';
 @import 'node_modules/@ionic/angular/css/ionic-swiper.css';
 
 //set ion-content background to the movie poster
@@ -26,6 +27,5 @@ ion-content {
   align-items: center;
   justify-content: center;
 }
-
 
 
