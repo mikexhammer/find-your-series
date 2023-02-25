@@ -1,16 +1,16 @@
 //let the position fixed of app-search on top of the page
-app-search {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-}
+// app-search {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     z-index: 1;
+// }
 
-//fix the postion of ion-list under the app-search
-ion-grid {
-    margin-top: 300px;
-}
+// //fix the postion of ion-list under the app-search
+// ion-grid {
+//     margin-top: 300px;
+// }
 
 ion-badge {
     margin-right: 6px; 

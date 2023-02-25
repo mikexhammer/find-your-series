@@ -9,7 +9,12 @@
 <ion-content>
   <app-search></app-search>
 
-  <ion-grid>
+  <ion-item>
+    <ion-label>Switch between Grid and List</ion-label>
+    <ion-toggle slot="end" (ionChange)="toggleView()"></ion-toggle>
+  </ion-item>
+
+  <ion-grid *ngIf="this.gridView">
     <ion-row>
       <ion-col size="6" *ngFor="let item of serien">
         <ion-card [routerLink]="[item.id]">
@@ -23,7 +28,7 @@
     </ion-row>
   </ion-grid>
 
-  <!-- <ion-list>
+  <ion-list *ngIf="this.listView">
     <ion-item button *ngFor="let item of serien" [routerLink]="[item.id]">
       <ion-avatar slot="start">
         <img [src]="imageBaseUrl + '/w92/' + item.poster_path">
@@ -33,9 +38,9 @@
         {{item.provider_id}}
         <p>{{item.first_air_date | date: 'y'}}</p>
       </ion-label>
-      <ion-badge slot="end">{{item.vote_average | number: '1.0-1'}}</ion-badge>
+      <ion-badge slot="end" color="warning">{{item.vote_average | number: '1.0-1'}}</ion-badge>
     </ion-item>
-  </ion-list> -->
+  </ion-list>
 
 
   <ion-infinite-scroll *ngIf="this.disableInfiniteScroll==false" (ionInfinite)="loadMore($any($event))">

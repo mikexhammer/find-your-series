@@ -15,6 +15,8 @@ import { environment } from 'src/environments/environment';
 export class SerienPage implements OnInit {
   serien = [] as any[];
   currentPage = 1;
+  listView = false;
+  gridView = true;
   disableInfiniteScroll = false;
   imageBaseUrl = environment.images;
   searchName;
@@ -79,5 +81,10 @@ export class SerienPage implements OnInit {
 
   scrollToTop() {
     document.querySelector('ion-content')?.scrollToTop(500);
+  }
+
+  toggleView() {
+    this.listView = !this.listView;
+    this.gridView = !this.gridView;
   }
 }
