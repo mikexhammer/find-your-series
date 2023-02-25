@@ -10,7 +10,6 @@ import { SerieService } from 'src/app/services/serie.service';
 export class SettingsPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
-  darkMode: boolean = true;
 
   constructor(
     private serieService: SerieService,
