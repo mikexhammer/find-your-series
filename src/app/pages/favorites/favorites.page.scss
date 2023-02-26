@@ -14,3 +14,37 @@ h2 {
 ion-header {
   background-color: var(--ion-background-color, #fff);
 }
+
+ion-badge {
+  margin-right: 6px; 
+}
+
+ion-button {
+  size: small;
+  margin-right: 5px;
+  --border-radius: 20px;
+}
+
+#grid {
+  --color: black;
+}
+
+#view {
+  --color: gray;
+}
+
+.poster {
+  height: 200px;
+  object-fit: cover;
+}
+
+//display the ion-button right side of the ion-card and the ion-card-header 
+.delete {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+

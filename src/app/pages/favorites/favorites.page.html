@@ -4,11 +4,39 @@
 
 <ion-content>
 
-  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+<ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-list *ngIf="(this.favorites.length)!=0">
+  <ion-item lines="none">
+    <!-- Grid -->
+    <ion-button id="grid" (click)="toggleGrid()">
+      <ion-icon name="grid-outline" ></ion-icon>
+    </ion-button>
+    <!-- List -->
+    <ion-button id="view" (click)="toggleView()">
+      <ion-icon name="list-outline" ></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-grid *ngIf="(this.favorites.length)!=0 && this.gridView">
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of favorites">
+        <ion-button *ngIf="this.showDelete" color="danger" class="delete" (click)="presentAlert(item)">
+          x
+        </ion-button>
+        <ion-card (press)="showDeleteButton()" [routerLink]="[item.id]">
+          <ion-img class="poster" [src]="imageBaseUrl + '/w300/' + item.poster_path"></ion-img>
+          <ion-card-content>
+            <ion-badge slot="start">{{item.first_air_date | date: 'y'}}</ion-badge>
+            <ion-badge color="warning" slot="end">{{item.vote_average | number: '1.0-1'}}</ion-badge>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list *ngIf="(this.favorites.length)!=0 && this.listView" >
     <!-- List newest item first -->
     <ion-item-sliding *ngFor="let item of favorites">
       <ion-item button [routerLink]="[item.id]">
@@ -20,7 +48,7 @@
           {{item.provider_id}}
           <p>{{item.first_air_date | date: 'y'}}</p>
         </ion-label>
-        <ion-badge slot="end">{{item.vote_average | number: '1.0-1' }}</ion-badge>
+        <ion-badge color="warning" slot="end">{{item.vote_average | number: '1.0-1' }}</ion-badge>
       </ion-item>
       <ion-item-options>
         <ion-item-option color="danger" button (click)="presentAlert(item)">

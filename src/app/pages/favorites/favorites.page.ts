@@ -12,6 +12,9 @@ import { environment } from 'src/environments/environment';
 export class FavoritesPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
+  listView = false;
+  gridView = true;
+  showDelete = false;
 
   // Refresh
   handleRefresh(event) {
@@ -31,6 +34,10 @@ export class FavoritesPage implements OnInit {
 
   ngOnInit() {
     this.setFavorite();
+  }
+
+  showDeleteButton() {
+    this.showDelete = true;
   }
 
   setFavorite() {
@@ -64,5 +71,19 @@ export class FavoritesPage implements OnInit {
     const { role } = await alert.onDidDismiss();
     this.roleMessage = `Dismissed with role: ${role}`;
     this.setFavorite();
+  }
+
+  toggleGrid() {
+    this.gridView = true;
+    this.listView = false;
+    document.getElementById('grid').style.color = 'black';
+    document.getElementById('view').style.color = 'gray';
+  }
+
+  toggleView() {
+    this.gridView = false;
+    this.listView = true;
+    document.getElementById('grid').style.color = 'gray';
+    document.getElementById('view').style.color = 'black';
   }
 }
