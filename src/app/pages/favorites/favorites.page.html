@@ -17,15 +17,22 @@
     <ion-button id="view" (click)="toggleView()">
       <ion-icon name="list-outline" ></ion-icon>
     </ion-button>
+    <ion-button color="danger" slot="end" size="small" *ngIf="!this.showDeleteButton && this.favorites.length>0" (click)="deleteFavorites()">
+      Delete
+    </ion-button>
+    <ion-button slot="end" size="small" *ngIf="this.showDeleteButton" (click)="cancelDelete()">
+      Cancel
+    </ion-button>
   </ion-item>
+  
 
   <ion-grid *ngIf="(this.favorites.length)!=0 && this.gridView">
     <ion-row>
       <ion-col size="6" *ngFor="let item of favorites">
-        <ion-button *ngIf="this.showDelete" color="danger" class="delete" (click)="presentAlert(item)">
+        <ion-button *ngIf="this.showDeleteButton" color="danger" class="delete" (click)="presentAlert(item)">
           x
         </ion-button>
-        <ion-card (press)="showDeleteButton()" [routerLink]="[item.id]">
+        <ion-card class="faves" [routerLink]="[item.id]">
           <ion-img class="poster" [src]="imageBaseUrl + '/w300/' + item.poster_path"></ion-img>
           <ion-card-content>
             <ion-badge slot="start">{{item.first_air_date | date: 'y'}}</ion-badge>

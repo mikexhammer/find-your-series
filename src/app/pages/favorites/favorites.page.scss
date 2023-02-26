@@ -48,3 +48,35 @@ ion-button {
   height: 30px;
 }
 
+.wobble {
+  animation-name: wobble;
+  animation-duration: 0.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes wobble {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(4deg);
+  }
+}
+
+.shake {
+  animation-name: shake;
+  animation-duration: 0.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+
+@keyframes shake {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(4deg);
+  }
+}

@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { FavoritesPageRoutingModule } from './favorites-routing.module';
 
 import { FavoritesPage } from './favorites.page';
-import { HammerModule } from '@angular/platform-browser';
+
+import { DirectivesModule } from '../../directives/directives.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { HammerModule } from '@angular/platform-browser';
     FormsModule,
     IonicModule,
     FavoritesPageRoutingModule,
-    HammerModule,
+    DirectivesModule
   ],
   declarations: [FavoritesPage]
 })

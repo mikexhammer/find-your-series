@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { SerieService } from 'src/app/services/serie.service';
 import { environment } from 'src/environments/environment';
@@ -9,12 +9,35 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./favorites.page.scss'],
 })
 // https://ionicframework.com/docs/api/refresher
-export class FavoritesPage implements OnInit {
+export class FavoritesPage implements OnInit  {
   handlerMessage = '';
   roleMessage = '';
   listView = false;
   gridView = true;
-  showDelete = false;
+  showDeleteButton = false;
+  isShaking = false;
+  cards;
+  
+
+
+  cancelDelete() {
+    this.showDeleteButton = false;
+    this.isShaking = false;
+    this.cards.forEach(card => {
+        card.classList.remove('wobble');
+    });
+  }
+
+
+  deleteFavorites() {
+    this.showDeleteButton = true;
+    this.isShaking = true;
+    this.cards = document.querySelectorAll('.faves');
+    this.cards.forEach(card => {
+        card.classList.add('wobble');
+    });
+    console.log(this.cards);
+  }
 
   // Refresh
   handleRefresh(event) {
@@ -22,6 +45,7 @@ export class FavoritesPage implements OnInit {
       this.setFavorite();
       event.target.complete();
     }, 1000);
+    console.log('Refresh Complete');
   }
 
   favorites = [] as any[];
@@ -29,20 +53,27 @@ export class FavoritesPage implements OnInit {
 
   constructor(
     private serieService: SerieService,
-    private alertController: AlertController
+    private alertController: AlertController,
   ) {}
 
   ngOnInit() {
     this.setFavorite();
   }
 
-  showDeleteButton() {
-    this.showDelete = true;
-  }
-
   setFavorite() {
+    if(this.favorites.length == 1) {
+      this.showDeleteButton = false;
+      this.isShaking = false;
+    } 
     this.favorites = this.serieService.getSeriesFromLocalStorage();
+    if(this.isShaking) {
+    this.cards = document.querySelectorAll('.faves');
+    this.cards.forEach(card => {
+      card.classList.add('wobble');
+    });
+    console.log('wobble activated');
   }
+}
 
   async presentAlert(serie) {
     const alert = await this.alertController.create({
