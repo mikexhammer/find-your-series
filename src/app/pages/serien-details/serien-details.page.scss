@@ -5,3 +5,31 @@ ion-header {
 ion-footer {
     background-color: var(--ion-background-color, #fff);
   }
+
+  .flexCont{
+    //set flex to the ion-content
+    display: flex;
+    align-items: center;
+  }
+
+  .saveSerie{
+    margin-left: auto;
+  }
+
+  ion-button{
+    //set backround tr
+    --background: transparent;
+  }
+
+.saveIcon {
+    //set ion-icon color to yellow
+    color: var(--ion-color-warning);
+  }
+
+  ion-back-button{
+    //set ion-button color to yellow
+    --icon-margin-start: -80%;
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+

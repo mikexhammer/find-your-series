@@ -1,17 +1,17 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
       <ion-back-button defaultHref="/serien"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{serie?.name}}</ion-title>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card *ngIf="serie">
     <img [src]="imageBaseUrl + '/w400/' + serie.poster_path" class="serie-Poster">
     <ion-card-header>
-      <ion-card-title>{{serie.name}}</ion-card-title>
+      <div class="flexCont">
+        <ion-card-title>{{serie.name}}</ion-card-title>
+        <ion-button class="saveSerie" (click)="this.saveSeries(serie)">
+          <ion-icon class="saveIcon" name="save-outline" ></ion-icon>
+        </ion-button>
+      </div>
       <ion-card-subtitle>{{serie.providers}}</ion-card-subtitle>
       <ion-text color="tertiary">
         <span *ngFor="let g of serie.genres; let isLast = last">{{g.name}} {{!isLast ? " · " : ""}}
@@ -43,10 +43,9 @@
   </ion-card>
 </ion-content>
 
-<ion-footer>
+<!-- <ion-footer>
   <ion-button expand="full" (click)="this.saveSeries(serie)">
-    <!-- disable button if serie is already in local storage -->
     <ion-icon name="star-outline" slot="start"></ion-icon>
     save to list
   </ion-button>
-</ion-footer>
+</ion-footer> -->

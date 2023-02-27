@@ -9,14 +9,16 @@
 <ion-content>
   <app-search></app-search>
 
-  <ion-item lines="none">
-    <ion-label *ngIf="!this.searchName">Top Series</ion-label>
-    <ion-label *ngIf="this.searchName">Search results</ion-label>
-
-  </ion-item>
-
-  <ion-toggle [checked]="true" (ionChange)='toggleView()'></ion-toggle>
-
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col><ion-item lines="none">
+        <ion-label *ngIf="!this.searchName">Top Series</ion-label>
+        <ion-label *ngIf="this.searchName">Search results</ion-label>
+      </ion-item></ion-col>
+      <ion-col><ion-toggle [checked]="true" (ionChange)='toggleView()'></ion-toggle></ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-grid *ngIf="!this.listView">
     <ion-row>
