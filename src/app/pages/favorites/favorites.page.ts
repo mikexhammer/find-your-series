@@ -13,7 +13,6 @@ export class FavoritesPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
   listView = false;
-  gridView = true;
   showDeleteButton = false;
   isShaking = false;
 
@@ -85,17 +84,9 @@ export class FavoritesPage implements OnInit {
     this.setFavorite();
   }
 
-  toggleGrid() {
-    this.gridView = true;
-    this.listView = false;
-    document.getElementById('grid').style.color = 'black';
-    document.getElementById('view').style.color = 'gray';
-  }
+
 
   toggleView() {
-    this.gridView = false;
-    this.listView = true;
-    document.getElementById('grid').style.color = 'gray';
-    document.getElementById('view').style.color = 'black';
+    this.listView = !this.listView;
   }
 }

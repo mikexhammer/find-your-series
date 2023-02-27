@@ -16,7 +16,7 @@ ion-header {
 }
 
 ion-badge {
-  margin-right: 6px; 
+  margin-right: 6px;
 }
 
 ion-button {
@@ -38,7 +38,7 @@ ion-button {
   object-fit: cover;
 }
 
-//display the ion-button right side of the ion-card and the ion-card-header 
+//display the ion-button right side of the ion-card and the ion-card-header
 .delete {
   position: absolute;
   right: 5px;
@@ -79,4 +79,15 @@ ion-button {
   to {
     transform: rotate(4deg);
   }
+}
+
+ion-toggle {
+  //icon smaller
+    --handle-background-checked:
+    url(../../../assets/icon/grid-outline.png) no-repeat center /
+    70%;
+
+    --handle-background:
+    url(../../../assets/icon/list-outline.png) no-repeat center /
+    70%;
 }

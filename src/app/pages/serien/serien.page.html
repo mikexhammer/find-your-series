@@ -12,20 +12,13 @@
   <ion-item lines="none">
     <ion-label *ngIf="!this.searchName">Top Series</ion-label>
     <ion-label *ngIf="this.searchName">Search results</ion-label>
-    <!-- <ion-icon *ngIf="this.gridView" name="grid-outline" slot="end"></ion-icon>
-    <ion-icon *ngIf="this.listView" name="list-outline" slot="end"></ion-icon>
-    <ion-toggle slot="end" (ionChange)="toggleView()"></ion-toggle> -->
-    <ion-button id="grid" (click)="toggleGrid()">
-      <ion-icon name="grid-outline" ></ion-icon>
-      <!-- Grid -->
-    </ion-button>
-    <ion-button id="view" (click)="toggleView()">
-      <ion-icon name="list-outline" ></ion-icon>
-      <!-- List -->
-    </ion-button>
+
   </ion-item>
 
-  <ion-grid *ngIf="this.gridView">
+  <ion-toggle [checked]="true" (ionChange)='toggleView()'></ion-toggle>
+
+
+  <ion-grid *ngIf="!this.listView">
     <ion-row>
       <ion-col size="6" *ngFor="let item of serien">
         <ion-card [routerLink]="[item.id]">
@@ -38,6 +31,8 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+
 
   <ion-list *ngIf="this.listView">
     <ion-item button *ngFor="let item of serien" [routerLink]="[item.id]">

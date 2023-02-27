@@ -16,7 +16,6 @@ export class SerienPage implements OnInit {
   serien = [] as any[];
   currentPage = 1;
   listView = false;
-  gridView = true;
   disableInfiniteScroll = false;
   imageBaseUrl = environment.images;
   searchName;
@@ -113,19 +112,7 @@ export class SerienPage implements OnInit {
     document.querySelector('ion-content')?.scrollToTop(500);
   }
 
-  toggleGrid() {
-    this.gridView = true;
-    this.listView = false;
-    document.getElementById('grid').style.color = 'black';
-    document.getElementById('view').style.color = 'gray';
-  }
-
   toggleView() {
-    this.gridView = false;
-    this.listView = true;
-    document.getElementById('grid').style.color = 'gray';
-    document.getElementById('view').style.color = 'black';
+    this.listView = !this.listView;
   }
-
-
 }

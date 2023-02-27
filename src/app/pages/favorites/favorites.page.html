@@ -9,25 +9,18 @@
   </ion-refresher>
 
   <ion-item lines="none">
-    <!-- Grid -->
-    <ion-button id="grid" (click)="toggleGrid()">
-      <ion-icon name="grid-outline"></ion-icon>
-    </ion-button>
-    <!-- List -->
-    <ion-button id="view" (click)="toggleView()">
-      <ion-icon name="list-outline"></ion-icon>
-    </ion-button>
+    <ion-toggle [checked]="true" (ionChange)='toggleView()'></ion-toggle>
     <ion-button color="danger" slot="end" size="small"
-      *ngIf="!this.showDeleteButton && this.favorites.length>0 && this.gridView" (click)="deleteFavorites()">
+      *ngIf="!this.showDeleteButton && this.favorites.length>0 && !this.listView" (click)="deleteFavorites()">
       Delete
     </ion-button>
-    <ion-button slot="end" size="small" *ngIf="this.showDeleteButton && this.gridView" (click)="cancelDelete()">
+    <ion-button slot="end" size="small" *ngIf="this.showDeleteButton && !this.listView" (click)="cancelDelete()">
       Cancel
     </ion-button>
   </ion-item>
 
 
-  <ion-grid *ngIf="(this.favorites.length)!=0 && this.gridView">
+  <ion-grid *ngIf="(this.favorites.length)!=0 && !this.listView">
     <ion-row>
       <ion-col size="6" *ngFor="let item of favorites">
         <ion-button *ngIf="this.showDeleteButton" color="danger" class="delete" (click)="presentAlert(item)">
