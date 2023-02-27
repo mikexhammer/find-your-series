@@ -19,6 +19,7 @@ export class FavoritesPage implements OnInit {
   cancelDelete() {
     this.showDeleteButton = false;
     this.isShaking = false;
+    this.ngOnInit();
   }
 
   deleteFavorites() {
