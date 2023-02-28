@@ -9,12 +9,12 @@
   </ion-refresher>
 
   <ion-item lines="none">
-    <ion-toggle [checked]="true" (ionChange)='toggleView()'></ion-toggle>
-    <ion-button color="danger" slot="end" size="small"
+    <ion-toggle [checked]="!this.listView" (ionChange)='toggleView()'></ion-toggle>
+    <ion-button class="deleteButton" color="danger" slot="end" size="small"
       *ngIf="!this.showDeleteButton && this.favorites.length>0 && !this.listView" (click)="deleteFavorites()">
       Delete
     </ion-button>
-    <ion-button slot="end" size="small" *ngIf="this.showDeleteButton && !this.listView" (click)="cancelDelete()">
+    <ion-button class="deleteButton"  slot="end" size="small" *ngIf="this.showDeleteButton && !this.listView" (click)="cancelDelete()">
       Cancel
     </ion-button>
   </ion-item>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { SerieService } from 'src/app/services/serie.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-settings',
@@ -10,11 +11,12 @@ import { SerieService } from 'src/app/services/serie.service';
 export class SettingsPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
-  darkMode: boolean = true;
+  darkMode: boolean = this.appComponent.darkmode;
 
   constructor(
     private serieService: SerieService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private appComponent: AppComponent
   ) {
     
   }

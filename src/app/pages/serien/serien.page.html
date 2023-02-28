@@ -8,13 +8,12 @@
 
 <ion-content>
   <app-search></app-search>
-
   
   <ion-grid>
     <ion-row>
       <ion-col><ion-item lines="none">
-        <ion-label *ngIf="!this.searchName">Top Series</ion-label>
-        <ion-label *ngIf="this.searchName">Search results</ion-label>
+        <ion-label class="title" *ngIf="!this.searchName">Top Series</ion-label>
+        <ion-label class="title" *ngIf="this.searchName">Search results</ion-label>
       </ion-item></ion-col>
       <ion-col><ion-toggle [checked]="true" (ionChange)='toggleView()'></ion-toggle></ion-col>
     </ion-row>
@@ -28,7 +27,7 @@
           <ion-card-content>
             <ion-badge slot="start">{{item.first_air_date | date: 'y'}}</ion-badge>
             <ion-badge color="warning" slot="end">{{item.vote_average | number: '1.0-1'}}</ion-badge>
-            <ion-label class="gridSerieTitle">{{item.name}}</ion-label>
+            <!-- <ion-label class="gridSerieTitle">{{item.name}}</ion-label> -->
           </ion-card-content>
         </ion-card>
       </ion-col>

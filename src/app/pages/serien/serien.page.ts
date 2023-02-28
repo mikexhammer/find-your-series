@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {
   InfiniteScrollCustomEvent,
   IonInfiniteScroll,
@@ -22,6 +22,8 @@ export class SerienPage implements OnInit {
   searchGenre;
   searchYear;
 
+
+
   constructor(
     private serieService: SerieService,
     private loadingCtrl: LoadingController
@@ -30,6 +32,7 @@ export class SerienPage implements OnInit {
   ngOnInit() {
     this.loadSeries();
   }
+
 
   //Asnyc bcs code will await until all of this is finished :)
   async loadSeries(event?: InfiniteScrollCustomEvent) {

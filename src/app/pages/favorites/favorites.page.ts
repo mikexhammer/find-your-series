@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { SerieService } from 'src/app/services/serie.service';
 import { environment } from 'src/environments/environment';
@@ -15,6 +15,10 @@ export class FavoritesPage implements OnInit {
   listView = false;
   showDeleteButton = false;
   isShaking = false;
+
+  ionViewWillEnter() {
+    this.setFavorite();
+  }
 
   cancelDelete() {
     this.showDeleteButton = false;
@@ -33,7 +37,6 @@ export class FavoritesPage implements OnInit {
       this.setFavorite();
       event.target.complete();
     }, 1000);
-    console.log('Refresh Complete');
   }
 
   favorites = [] as any[];
@@ -48,11 +51,16 @@ export class FavoritesPage implements OnInit {
     this.setFavorite();
   }
 
+// ngAfterViewInit(): void {
+//     this.setFavorite();
+// }
+
+
   setFavorite() {
     this.favorites = this.serieService.getSeriesFromLocalStorage();
     if (this.favorites.length == 0) {
       this.showDeleteButton = false;
-      this.cancelDelete();
+      this.isShaking = false;
     }
   }
 

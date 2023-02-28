@@ -9,7 +9,8 @@
       <div class="flexCont">
         <ion-card-title>{{serie.name}}</ion-card-title>
         <ion-button class="saveSerie" (click)="this.saveSeries(serie)">
-          <ion-icon class="saveIcon" name="save-outline" ></ion-icon>
+          <ion-icon *ngIf="checkIfSerieAlreadyInLocalStorage(this.serie)" class="saveIcon" name="star" ></ion-icon>
+          <ion-icon *ngIf="!checkIfSerieAlreadyInLocalStorage(this.serie)" class="saveIcon" name="star-outline" ></ion-icon>
         </ion-button>
       </div>
       <ion-card-subtitle>{{serie.providers}}</ion-card-subtitle>
@@ -42,10 +43,3 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
-
-<!-- <ion-footer>
-  <ion-button expand="full" (click)="this.saveSeries(serie)">
-    <ion-icon name="star-outline" slot="start"></ion-icon>
-    save to list
-  </ion-button>
-</ion-footer> -->

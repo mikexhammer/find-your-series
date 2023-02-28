@@ -5,7 +5,7 @@ ion-card-header.ios {
 }
 
 h2 {
-  margin-top: 40px;
+  margin-top: 60px;
   margin-left: 20px;
   margin-bottom: 30px;
   color: gray;
@@ -47,6 +47,11 @@ ion-button {
   z-index: 1;
   width: 30px;
   height: 30px;
+}
+
+.deleteButton{
+  width: 51px;
+  height: 32px;
 }
 
 .wobble {
